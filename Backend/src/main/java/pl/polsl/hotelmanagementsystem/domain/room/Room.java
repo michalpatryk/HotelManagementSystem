@@ -2,6 +2,7 @@ package pl.polsl.hotelmanagementsystem.domain.room;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.polsl.hotelmanagementsystem.domain.residence.Residence;
 import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
 
 import javax.persistence.*;
@@ -22,4 +23,6 @@ public class Room {
 
     @OneToMany
     private List<RoomIssues> roomIssues;
+    @OneToMany
+    private List<Residence> residences;
 }

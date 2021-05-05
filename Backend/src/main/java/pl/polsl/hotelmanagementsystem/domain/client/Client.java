@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import pl.polsl.hotelmanagementsystem.domain.checkedIn.CheckedIn;
+import pl.polsl.hotelmanagementsystem.domain.reservation.Reservation;
 import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
 
 import javax.persistence.*;
@@ -30,4 +32,8 @@ public class Client {
 
     @OneToMany
     private List<RoomIssues> roomIssues;
+    @OneToMany
+    private List<Reservation> reservations;
+    @OneToMany
+    private List<CheckedIn> checkedIns;
 }
