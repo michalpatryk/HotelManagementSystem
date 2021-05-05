@@ -18,10 +18,10 @@ public class ClientService {
         || signUpDTO.getAddress() == null){
             throw new IllegalArgumentException("Fill all spaces");
         }
-        if(signUpDTO.getEmail() != signUpDTO.getRepeatedEmail()){
+        if(!signUpDTO.getEmail().equals(signUpDTO.getRepeatedEmail()) ){
             throw new IllegalArgumentException("Repeated email is not the same");
         }
-        if(signUpDTO.getPassword() != signUpDTO.getRepeatedPassword()){
+        if(!signUpDTO.getPassword().equals(signUpDTO.getRepeatedPassword()) ){
             throw new IllegalArgumentException("Repeated password blah blah");
         }
         Client client = Client.builder()
@@ -35,15 +35,8 @@ public class ClientService {
                 .phoneNumber(signUpDTO.getNumber())
                 .password(signUpDTO.getPassword())
                 .build();
+
         clientRepository.save(client);
-        //    private String firstName;
-        //    private String lastName;
-        //    private String country;
-        //    private String postCode;
-        //    private String city;
-        //    private String address;
-        //    private String phoneNumber;
-        //    private String password;
         return "Zarejestrowany";
     }
 }
