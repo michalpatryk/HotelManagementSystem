@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,4 +27,7 @@ public class Client {
     private String address;
     private String phoneNumber;
     private String password;
+
+    @OneToMany
+    private List<RoomIssues> roomIssues;
 }

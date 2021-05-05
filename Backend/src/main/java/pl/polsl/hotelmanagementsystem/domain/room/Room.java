@@ -2,11 +2,10 @@ package pl.polsl.hotelmanagementsystem.domain.room;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,4 +19,7 @@ public class Room {
     private Integer floor;
     private String description;
     private Double price;
+
+    @OneToMany
+    private List<RoomIssues> roomIssues;
 }
