@@ -1,4 +1,4 @@
-package pl.polsl.hotelmanagementsystem.domain.expenses;
+package pl.polsl.hotelmanagementsystem.domain.expense;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,15 +10,13 @@ import java.sql.Date;
 @Entity
 @Getter
 @Setter
-public class Expenses {
+public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
     private Date date;
-    private Integer floor;
-    private String ExpensesType;    //enum!
-    private Long room_id;
+    private String ExpensesType;    //TODO: enum!
 
     @ManyToOne
     private Room room;

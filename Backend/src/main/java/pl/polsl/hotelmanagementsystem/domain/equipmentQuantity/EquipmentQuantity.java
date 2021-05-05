@@ -14,8 +14,6 @@ public class EquipmentQuantity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long roomId;
-    private Long equipmentId;
     private Integer quantity;
 
     @ManyToOne

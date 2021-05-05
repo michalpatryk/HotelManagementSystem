@@ -1,4 +1,4 @@
-package pl.polsl.hotelmanagementsystem.domain.roomIssues;
+package pl.polsl.hotelmanagementsystem.domain.roomIssue;
 
 import pl.polsl.hotelmanagementsystem.domain.client.Client;
 import pl.polsl.hotelmanagementsystem.domain.room.Room;
@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class RoomIssues {
+public class RoomIssue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

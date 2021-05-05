@@ -2,8 +2,10 @@ package pl.polsl.hotelmanagementsystem.domain.room;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.polsl.hotelmanagementsystem.domain.equipmentQuantity.EquipmentQuantity;
+import pl.polsl.hotelmanagementsystem.domain.expense.Expense;
 import pl.polsl.hotelmanagementsystem.domain.residence.Residence;
-import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
+import pl.polsl.hotelmanagementsystem.domain.roomIssue.RoomIssue;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,7 +24,11 @@ public class Room {
     private Double price;
 
     @OneToMany
-    private List<RoomIssues> roomIssues;
+    private List<RoomIssue> roomIssues;
     @OneToMany
     private List<Residence> residences;
+    @OneToMany
+    private List<Expense> expenses;
+    @OneToMany
+    private List<EquipmentQuantity> equipmentQuantities;
 }

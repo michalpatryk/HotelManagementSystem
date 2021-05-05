@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import pl.polsl.hotelmanagementsystem.domain.checkedIn.CheckedIn;
 import pl.polsl.hotelmanagementsystem.domain.reservation.Reservation;
-import pl.polsl.hotelmanagementsystem.domain.roomIssues.RoomIssues;
+import pl.polsl.hotelmanagementsystem.domain.roomIssue.RoomIssue;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,7 +31,7 @@ public class Client {
     private String password;
 
     @OneToMany
-    private List<RoomIssues> roomIssues;
+    private List<RoomIssue> roomIssues;
     @OneToMany
     private List<Reservation> reservations;
     @OneToMany
