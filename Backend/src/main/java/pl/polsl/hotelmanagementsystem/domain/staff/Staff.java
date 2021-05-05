@@ -13,6 +13,6 @@ public class Staff {
     private String role; //TODO: add enum
     private String firstName;
     private String lastName;
-    private String login;
+    private String email;
     private String password;
 }
