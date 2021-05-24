@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hotel_management_system/components/filledRoundedButton.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 class LoginScreenComponent extends StatelessWidget {
@@ -13,15 +14,18 @@ class LoginScreenComponent extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              child: Image(
-                image: AssetImage('assets/loginPhoto.png'),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/loginPhoto.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           Expanded(
             //flex: 3,
             child: Container(
-                color: Colors.amber,
+                color: Colors.white,
                 child: Column(
                   children: [
                     Container(
@@ -34,8 +38,48 @@ class LoginScreenComponent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(),
-                    Container(),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            "Email",
+                            style: TextStyle(
+                              color: myColors.themeData.colorScheme.primary,
+                              fontSize: 12,
+                              fontFamily: 'RobotoMono',
+                            ),
+                          ),
+                          Material(
+                              child: TextField(
+                            decoration:
+                                InputDecoration(hintText: 'Podaj adres email'),
+                          ))
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text("Hasło",
+                              style: TextStyle(
+                                color: myColors.themeData.colorScheme.primary,
+                                fontSize: 12,
+                                fontFamily: 'RobotoMono',
+                              )),
+                          Material(
+                              child: TextField(
+                            decoration:
+                                InputDecoration(hintText: 'Podaj hasło'),
+                          ))
+                        ],
+                      ),
+                    ),
+                    FilledRoundedButton(
+                      buttonText: 'zaloguj się',
+                      onPresesd: () => {},
+                    ),
                     Container(
                       child: RichText(
                         text: TextSpan(
@@ -43,7 +87,7 @@ class LoginScreenComponent extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 12,
-                              fontFamily: 'Roboto',
+                              fontFamily: 'RobotoMono',
                             ),
                             children: <TextSpan>[
                               TextSpan(
