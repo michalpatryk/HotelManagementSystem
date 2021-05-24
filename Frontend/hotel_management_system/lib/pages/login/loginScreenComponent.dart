@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
@@ -11,11 +12,11 @@ class LoginScreenComponent extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            // child: FittedBox(
-            //   child: Image.asset('assets/loginPhoto.png'),
-            //   fit: BoxFit.fill,
-            // ),
-            child: Container(),
+            child: Container(
+              child: Image(
+                image: AssetImage('assets/loginPhoto.png'),
+              ),
+            ),
           ),
           Expanded(
             //flex: 3,
@@ -33,9 +34,30 @@ class LoginScreenComponent extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Container(),
+                    Container(),
                     Container(
-                      color: Colors.blue,
-                      child: Text("ELO"),
+                      child: RichText(
+                        text: TextSpan(
+                            text: 'Nie masz konta? ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Roboto',
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Zarejestruj się',
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      print('Button clicked');
+                                    },
+                                  style: TextStyle(
+                                    color:
+                                        myColors.themeData.colorScheme.primary,
+                                  ))
+                            ]),
+                      ),
                     ),
                   ],
                 )),
