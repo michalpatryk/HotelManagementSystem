@@ -10,39 +10,42 @@ class TopBar extends StatefulWidget {
 class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
-              child: Text(
-                "Gość",
-                style: TextStyle(
-                  fontSize: 16,
+    return Material(
+      child: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
+                child: Text(
+                  "Gość",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
-              child: CircleAvatar(
-                maxRadius: 24,
-                backgroundImage: AssetImage("images/avatar.jpg"),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 135, 0),
-              child: Text(
-                "Robert Makłowicz",
-                style: TextStyle(
-                  fontSize: 16,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
+                child: CircleAvatar(
+                  maxRadius: 24,
+                  backgroundImage: AssetImage("images/avatar.jpg"),
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 135, 0),
+                child: Text(
+                  "Robert Makłowicz",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
