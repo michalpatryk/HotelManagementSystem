@@ -12,9 +12,8 @@ class NavigationComponent extends StatefulWidget {
 class _NavigationComponentState extends State<NavigationComponent> {
   @override
   Widget build(BuildContext context) {
-    ColorTheme myColors = ColorTheme();
     return Material(
-      color: myColors.themeData.colorScheme.primary,
+      color: Theme.of(context).primaryColor,
       child: Container(
         child: Column(
           children: [
@@ -38,7 +37,10 @@ class _NavigationComponentState extends State<NavigationComponent> {
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text('Basic text: ' + index.toString(), style: TextStyle(color: Colors.white)),
+                      title: Text(
+                        'Basic text: ' + index.toString(),
+                        style: TextStyle(color: Colors.white),
+                      ),
                       leading: Icon(Icons.home, color: Colors.white),
                       onTap: () => {},
                     );
