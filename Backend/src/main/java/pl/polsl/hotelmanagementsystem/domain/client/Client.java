@@ -1,9 +1,6 @@
 package pl.polsl.hotelmanagementsystem.domain.client;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.polsl.hotelmanagementsystem.domain.checkedIn.CheckedIn;
 import pl.polsl.hotelmanagementsystem.domain.reservation.Reservation;
 import pl.polsl.hotelmanagementsystem.domain.roomIssue.RoomIssue;
@@ -15,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Client {
     @Id

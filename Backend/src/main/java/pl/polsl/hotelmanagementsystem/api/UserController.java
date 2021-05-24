@@ -16,10 +16,10 @@ public class UserController {
 
     @PostMapping(path = "/login")
     public String login(@RequestBody LoginDTO loginDTO){
-        return userService.login(loginDTO);
+        return userService.login(loginDTO);     // everyone can login
     }
     @PostMapping(path = "/signup")
     public String signUp(@RequestBody SignUpDTO signUpDTO){
-        return clientService.signUp(signUpDTO);
+        return clientService.signUp(signUpDTO); // only clients can register
     }
 }
