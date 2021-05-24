@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/MainContainer.dart';
+import 'package:hotel_management_system/pages/frontPage/FrontPage.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
       home: MainContainer(
-        child: Text("elo"),
+        child: FrontPage(),
       ),
     );
   }
