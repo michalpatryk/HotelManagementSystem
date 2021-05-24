@@ -29,7 +29,7 @@ class FrontPageAppBar extends StatelessWidget implements PreferredSizeWidget {
               TextButton(
                 onPressed: signUp,
                 child: Text(
-                  "Zarejestrój się".toUpperCase(),
+                  "Zarejestruj się".toUpperCase(),
                 ),
               ),
               SizedBox(
