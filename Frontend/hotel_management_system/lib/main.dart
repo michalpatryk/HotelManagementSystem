@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/topBar.dart';
+import 'package:hotel_management_system/pages/login/loginScreen.dart';
+import 'package:hotel_management_system/pages/login/loginScreenComponent.dart';
 import 'package:hotel_management_system/components/MainContainer.dart';
+import 'package:hotel_management_system/pages/reception/receptionScreen.dart';
 import 'package:hotel_management_system/pages/frontPage/FrontPage.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
+
+import 'components/navigationComponent.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,10 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
-      home: MainContainer(
-        child: FrontPage(),
-      ),
-      //home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ReceptionScreen(),
     );
   }
 }
@@ -37,9 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Row(
         children: <Widget>[
-          TopBar(),
+          Container(
+            width: 300,
+            child: NavigationComponent(),
+          ),
+          Expanded(
+            flex: 5,
+            child: Container(),
+          ),
         ],
       ),
     );

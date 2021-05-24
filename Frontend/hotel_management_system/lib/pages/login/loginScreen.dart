@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_management_system/pages/login/loginScreenComponent.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -6,22 +7,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: [
-          Expanded(
-            child: FittedBox(
-              child: Image.asset('assets/loginPhoto.png'),
-              fit: BoxFit.fill,
-            ),
-          ),
-          Expanded(
-            //flex: 3,
-            child: Container(
-              color: Colors.amber,
-            ),
-          ),
-        ],
-      ),
+      child: LoginScreenComponent(),
     );
   }
 }
