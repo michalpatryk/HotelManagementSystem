@@ -3,6 +3,7 @@ import 'package:hotel_management_system/components/topBar.dart';
 import 'package:hotel_management_system/pages/login/loginScreen.dart';
 import 'package:hotel_management_system/pages/login/loginScreenComponent.dart';
 import 'package:hotel_management_system/components/MainContainer.dart';
+import 'package:hotel_management_system/pages/frontPage/FrontPage.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 void main() {
