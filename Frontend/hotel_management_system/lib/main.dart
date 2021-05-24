@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/topBar.dart';
 import 'package:hotel_management_system/pages/login/loginScreen.dart';
+import 'package:hotel_management_system/pages/login/loginScreenComponent.dart';
 import 'package:hotel_management_system/components/MainContainer.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginScreen(),
     );
   }
 }
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         children: <Widget>[
           TopBar(),
+          LoginScreenComponent(),
         ],
       ),
     );
