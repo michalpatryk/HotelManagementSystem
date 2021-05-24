@@ -10,8 +10,7 @@ class TopBar extends StatefulWidget {
 class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
+    return Container(
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
@@ -47,7 +46,6 @@ class _TopBarState extends State<TopBar> {
             ],
           ),
         ),
-      ),
     );
   }
 }

@@ -12,7 +12,7 @@ class GuestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ColorTheme colorTheme = ColorTheme();
     return Scaffold(
-          body: Container(
+      body: Container(
         color: Colors.white,
         child: Row(
           children: <Widget>[

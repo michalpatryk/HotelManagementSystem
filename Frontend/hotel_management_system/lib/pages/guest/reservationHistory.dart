@@ -11,10 +11,10 @@ class ReservationHistory extends StatefulWidget {
 class _ReservationHistoryState extends State<ReservationHistory> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: BasicContainerShadow(
+    return BasicContainerShadow(
         width: 530,
         height: 310,
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(14.0),
           child: Column(
@@ -41,7 +41,6 @@ class _ReservationHistoryState extends State<ReservationHistory> {
             ],
           ),
         ),
-      ),
     );
   }
 
