@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
+import 'components/navigationComponent.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: NavigationComponent(),
     );
   }
 }
