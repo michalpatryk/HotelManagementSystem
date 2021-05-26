@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
-      home: GuestScreen(),
+      home: MainContainer(
+        child: FrontPage(),
+      ),
     );
   }
 }

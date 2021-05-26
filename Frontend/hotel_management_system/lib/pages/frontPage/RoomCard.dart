@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/filledRoundedButton.dart';
 
+import 'FullPageDateRangePickerDialog.dart';
+
 class RoomCard extends StatelessWidget {
   const RoomCard({Key key, this.roomSize, this.roomName, this.price}) : super(key: key);
 
@@ -12,8 +14,17 @@ class RoomCard extends StatelessWidget {
     print("Expand pressed");
   }
 
-  book() {
+  book(BuildContext context) {
     print("Booked pressed");
+    _openDateRangePickerDialog(context);
+  }
+
+  void _openDateRangePickerDialog(BuildContext context) {
+    Navigator.of(context).push(new MaterialPageRoute<Null>(
+        builder: (BuildContext context) {
+          return FullPageDataRangePickerDialog();
+        },
+        fullscreenDialog: true));
   }
 
   @override
@@ -151,7 +162,7 @@ class RoomCard extends StatelessWidget {
                             ),
                             FilledRoundedButton(
                               buttonText: "rezerwuj",
-                              onPresesd: book,
+                              onPresesd: () => book(context),
                             )
                           ],
                         )
