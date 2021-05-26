@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/basicContainerShadow.dart';
+import 'package:hotel_management_system/pages/guest/tileTitleBar.dart';
 
 class ReservationHistory extends StatefulWidget {
   ReservationHistory({Key key}) : super(key: key);
@@ -12,35 +13,26 @@ class _ReservationHistoryState extends State<ReservationHistory> {
   @override
   Widget build(BuildContext context) {
     return BasicContainerShadow(
-        width: 530,
-        height: 310,
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.history_rounded),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-                    child: Text(
-                      "Historia rezerwacji",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 24,),
-              singleHistoryRow(),
-              singleHistoryRow(),
-              singleHistoryRow(),
-            ],
-          ),
+      width: 530,
+      height: 310,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          children: [
+            TileTitleBar(
+              icon: Icons.history_rounded,
+              title: "Historia rezerwacji",
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            singleHistoryRow(),
+            singleHistoryRow(),
+            singleHistoryRow(),
+          ],
         ),
+      ),
     );
   }
 

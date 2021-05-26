@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/navigationComponent.dart';
 import 'package:hotel_management_system/components/topBar.dart';
+import 'package:hotel_management_system/pages/guest/actualReservations.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 import 'package:hotel_management_system/pages/guest/reservationHistory.dart';
 import 'package:hotel_management_system/pages/guest/reserveRoomTile.dart';
@@ -26,6 +27,7 @@ class GuestScreen extends StatelessWidget {
                   TopBar(),
                   ReservationHistory(),
                   ReserveRoomtile(),
+                  ActualReservations(),
                 ],
               ),
             ),
