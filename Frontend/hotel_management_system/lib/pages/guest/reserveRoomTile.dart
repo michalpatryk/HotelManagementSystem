@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/basicContainerShadow.dart';
 import 'package:hotel_management_system/components/roundButton.dart';
+import 'package:hotel_management_system/pages/guest/tileTitleBar.dart';
 
 class ReserveRoomtile extends StatelessWidget {
   const ReserveRoomtile({Key key}) : super(key: key);
@@ -16,26 +17,10 @@ class ReserveRoomtile extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.bookmark,
-                  color: Colors.white,
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
-                  child: Text(
-                    "Zarezerwuj pokój",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+            child: TileTitleBar(
+              icon: Icons.bookmark,
+              title: "Zarezerwuj pokój",
+              color: Colors.white,
             ),
           ),
           RoundButton(
