@@ -14,7 +14,7 @@ class ColorTheme {
         primary: Color.fromRGBO(252, 81, 133, 1),
         primaryVariant: Color.fromRGBO(252, 81, 133, 1),
         secondary: Color.fromRGBO(54, 79, 107, 1),
-        secondaryVariant: Color.fromRGBO(54, 79, 107, 1),
+        secondaryVariant: Color.fromRGBO(67, 221, 230, 1),
         background: Color.fromRGBO(240, 240, 240, 1),
         surface: Color.fromRGBO(240, 240, 240, 1),
         onBackground: txtColor,
