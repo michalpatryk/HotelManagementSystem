@@ -10,73 +10,187 @@ class CustomDateRangePicker extends StatefulWidget {
 
 /// State for MyApp
 class CustomDateRangePickerState extends State<CustomDateRangePicker> {
-  String _selectedDate = '';
-  String _dateCount = '';
-  String _range = '';
-  String _rangeCount = '';
+  String _range = "";
+  DateTime _startDate = DateTime.now().add(const Duration(days: 1));
+  DateTime _endDate = DateTime.now().add(const Duration(days: 8));
+  int _allDays = 7;
+  double _costPerDay = 250.0;
+  double _wholeCost = 7 * 250.0;
+  Function confirmButton;
 
-  /// The method for [DateRangePickerSelectionChanged] callback, which will be
-  /// called whenever a selection changed on the date picker widget.
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    /// The argument value will return the changed date as [DateTime] when the
-    /// widget [SfDateRangeSelectionMode] set as single.
-    ///
-    /// The argument value will return the changed dates as [List<DateTime>]
-    /// when the widget [SfDateRangeSelectionMode] set as multiple.
-    ///
-    /// The argument value will return the changed range as [PickerDateRange]
-    /// when the widget [SfDateRangeSelectionMode] set as range.
-    ///
-    /// The argument value will return the changed ranges as
-    /// [List<PickerDateRange] when the widget [SfDateRangeSelectionMode] set as
-    /// multi range.
     setState(() {
       if (args.value is PickerDateRange) {
         _range = DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
             ' - ' +
             DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate).toString();
-      } else if (args.value is DateTime) {
-        _selectedDate = args.value.toString();
-      } else if (args.value is List<DateTime>) {
-        _dateCount = args.value.length.toString();
-      } else {
-        _rangeCount = args.value.length.toString();
+        _startDate = args.value.startDate;
+        _endDate = args.value.endDate ?? args.value.startDate;
+        _allDays = _endDate.difference(_startDate).inDays;
+        _wholeCost = _allDays * _costPerDay;
+
+        validateDateRange();
       }
     });
   }
 
+  validateDateRange() {
+    if (isBlackoutDaysContainsInRangeDate()) {
+      _showAlertDateDialog();
+      confirmButton = null;
+    } else {
+      confirmButton = confirm;
+    }
+
+    if (_allDays == 0) {
+      confirmButton = null;
+    }
+  }
+
+  List<DateTime> _blackoutDates = [
+    DateTime.now().add(const Duration(days: 1)),
+    DateTime.now().add(const Duration(days: 3)),
+  ];
+
+  confirm() {
+    print("Confirm pressed");
+  }
+
+  goBack(BuildContext context) {
+    print("GoBack pressed");
+    Navigator.pop(context);
+  }
+
+  bool isBlackoutDaysContainsInRangeDate() {
+    for (var day in _blackoutDates) {
+      if (day.isAfter(_startDate) && day.isBefore(_endDate)) return true;
+    }
+    return false;
+  }
+
+  Future<void> _showAlertDateDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Błąd'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Zakres dat nie może zawierać nieaktywnych terminów'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 0,
-          height: 80,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text('Selected date: ' + _selectedDate),
-              Text('Selected date count: ' + _dateCount),
-              Text('Selected range: ' + _range),
-              Text('Selected ranges count: ' + _rangeCount)
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              width: 350,
+              height: 600,
+              child: buildLeftBar(context),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              height: 600,
+              width: 800,
+              child: buildDataPicker(context),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDataPicker(BuildContext context) {
+    return SfDateRangePicker(
+      enableMultiView: true,
+      rangeSelectionColor: Theme.of(context).primaryColor.withOpacity(.5),
+      startRangeSelectionColor: Theme.of(context).primaryColor,
+      endRangeSelectionColor: Theme.of(context).primaryColor,
+      todayHighlightColor: Theme.of(context).colorScheme.secondaryVariant,
+      onSelectionChanged: _onSelectionChanged,
+      minDate: DateTime.now(),
+      selectionColor: Theme.of(context).primaryColor.withOpacity(.3),
+      monthCellStyle: DateRangePickerMonthCellStyle(
+          blackoutDateTextStyle: const TextStyle(color: Colors.red, decoration: TextDecoration.lineThrough)),
+      monthViewSettings: DateRangePickerMonthViewSettings(firstDayOfWeek: 1, blackoutDates: _blackoutDates),
+      selectionMode: DateRangePickerSelectionMode.range,
+      initialSelectedRange: PickerDateRange(_startDate, _endDate),
+    );
+  }
+
+  Widget buildLeftBar(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: ListView(
+            children: [
+              ListTile(
+                leading: Text("Początek pobytu"),
+                trailing: Text(DateFormat('dd-MM-yyyy').format(_startDate).toString()),
+              ),
+              ListTile(
+                leading: Text("Koniec pobytu"),
+                trailing: Text(DateFormat('dd-MM-yyyy').format(_endDate).toString()),
+              ),
+              ListTile(
+                leading: Text("Ilość nocy"),
+                trailing: Text(_allDays.toString()),
+              ),
+              ListTile(
+                leading: Text("Cena za dobę"),
+                trailing: Text("${_costPerDay}zł"),
+              ),
+              ListTile(
+                leading: Text("Koszt"),
+                trailing: Text("${_wholeCost}zł"),
+              ),
             ],
           ),
         ),
-        Positioned(
-          left: 0,
-          top: 80,
-          right: 0,
-          bottom: 0,
-          child: SfDateRangePicker(
-            onSelectionChanged: _onSelectionChanged,
-            selectionMode: DateRangePickerSelectionMode.range,
-            initialSelectedRange: PickerDateRange(
-                DateTime.now().subtract(const Duration(days: 4)), DateTime.now().add(const Duration(days: 3))),
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () => goBack(context),
+              child: Text("powrót".toUpperCase()),
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            TextButton(
+              onPressed: confirmButton,
+              child: Text("Zatwierdź".toUpperCase()),
+            ),
+          ],
         )
       ],
     );
