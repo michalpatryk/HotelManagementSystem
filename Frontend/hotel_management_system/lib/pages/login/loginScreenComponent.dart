@@ -48,106 +48,109 @@ class LoginScreenComponent extends StatelessWidget {
             Expanded(
               //flex: 3,
               child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                        child: HeadingText(text: 'Dashboard'),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(40, 80, 40, 0),
-                        //height: 50,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              "Email",
-                              style: TextStyle(
-                                color: myColors.themeData.colorScheme.primary,
-                                fontSize: 12,
-                                fontFamily: 'RobotoMono',
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomRight: Radius.circular(20)),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                      child: HeadingText(text: 'Dashboard'),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(40, 80, 40, 0),
+                      //height: 50,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            "Email",
+                            style: TextStyle(
+                              color: myColors.themeData.colorScheme.primary,
+                              fontSize: 12,
+                              fontFamily: 'RobotoMono',
+                            ),
+                          ),
+                          Material(
+                            child: TextField(
+                              style: TextStyle(color: Colors.black87),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: myColors.themeData.colorScheme.primary),
+                                ),
+                                hintText: 'Podaj adres email',
+                                contentPadding: EdgeInsets.all(4),
                               ),
                             ),
-                            Material(
-                                child: TextField(
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(40, 20, 40, 50),
+                      //height: 50,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            "Hasło",
+                            style: TextStyle(
+                              color: myColors.themeData.colorScheme.primary,
+                              fontSize: 12,
+                              fontFamily: 'RobotoMono',
+                            ),
+                          ),
+                          Material(
+                            child: TextField(
                               style: TextStyle(color: Colors.black87),
                               decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: myColors
-                                              .themeData.colorScheme.primary)),
-                                  hintText: 'Podaj adres email',
-                                  contentPadding: EdgeInsets.all(4)),
-                            ))
-                          ],
-                        ),
+                                fillColor: Colors.white,
+                                filled: true,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: myColors.themeData.colorScheme.primary),
+                                ),
+                                hintText: 'Podaj hasło',
+                                contentPadding: EdgeInsets.all(4),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(40, 20, 40, 50),
-                        //height: 50,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text("Hasło",
+                    ),
+                    FilledRoundedButton(
+                      buttonText: 'zaloguj się',
+                      onPresesd: () => {},
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'Nie masz konta? ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'RobotoMono',
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Zarejestruj się',
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    print('Button clicked');
+                                  },
                                 style: TextStyle(
                                   color: myColors.themeData.colorScheme.primary,
-                                  fontSize: 12,
-                                  fontFamily: 'RobotoMono',
-                                )),
-                            Material(
-                                child: TextField(
-                              style: TextStyle(color: Colors.black87),
-                              decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: myColors
-                                              .themeData.colorScheme.primary)),
-                                  hintText: 'Podaj hasło',
-                                  contentPadding: EdgeInsets.all(4)),
-                            ))
+                                ))
                           ],
                         ),
                       ),
-                      FilledRoundedButton(
-                        buttonText: 'zaloguj się',
-                        onPresesd: () => {},
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                        child: RichText(
-                          text: TextSpan(
-                              text: 'Nie masz konta? ',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'RobotoMono',
-                              ),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: 'Zarejestruj się',
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        print('Button clicked');
-                                      },
-                                    style: TextStyle(
-                                      color: myColors
-                                          .themeData.colorScheme.primary,
-                                    ))
-                              ]),
-                        ),
-                      ),
-                    ],
-                  )),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
