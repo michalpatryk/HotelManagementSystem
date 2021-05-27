@@ -10,37 +10,57 @@ class LoginScreenComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ColorTheme myColors = ColorTheme();
-    return Container(
-      margin: EdgeInsets.fromLTRB(300, 200, 300, 200),
-      decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/loginPhoto.png'),
-                  fit: BoxFit.cover,
+    return Center(
+      child: Container(
+        //margin: EdgeInsets.fromLTRB(300, 200, 300, 200),
+        width: 900,
+        height: 500,
+        decoration: BoxDecoration(
+          //border: Border.all(
+          //  color: Colors.black,
+          //),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 11.0,
+              spreadRadius: 0.0,
+              offset: Offset(0.0, 4.0), // shadow direction: bottom right
+            )
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    bottomLeft: Radius.circular(20),
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage('assets/loginPhoto.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            //flex: 3,
-            child: Container(
-                color: Colors.white,
+            Expanded(
+              //flex: 3,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomRight: Radius.circular(20)),
+                  color: Colors.white,
+                ),
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                       child: HeadingText(text: 'Dashboard'),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
+                      padding: EdgeInsets.fromLTRB(40, 80, 40, 0),
+                      //height: 50,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -53,31 +73,50 @@ class LoginScreenComponent extends StatelessWidget {
                             ),
                           ),
                           Material(
-                              child: TextField(
-                            decoration: InputDecoration(
+                            child: TextField(
+                              style: TextStyle(color: Colors.black87),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: myColors.themeData.colorScheme.primary),
+                                ),
                                 hintText: 'Podaj adres email',
-                                contentPadding: EdgeInsets.all(4)),
-                          ))
+                                contentPadding: EdgeInsets.all(4),
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(40, 0, 40, 20),
+                      padding: EdgeInsets.fromLTRB(40, 20, 40, 50),
+                      //height: 50,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text("Hasło",
-                              style: TextStyle(
-                                color: myColors.themeData.colorScheme.primary,
-                                fontSize: 12,
-                                fontFamily: 'RobotoMono',
-                              )),
+                          Text(
+                            "Hasło",
+                            style: TextStyle(
+                              color: myColors.themeData.colorScheme.primary,
+                              fontSize: 12,
+                              fontFamily: 'RobotoMono',
+                            ),
+                          ),
                           Material(
-                              child: TextField(
-                            decoration: InputDecoration(
+                            child: TextField(
+                              style: TextStyle(color: Colors.black87),
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: myColors.themeData.colorScheme.primary),
+                                ),
                                 hintText: 'Podaj hasło',
-                                contentPadding: EdgeInsets.all(4)),
-                          ))
+                                contentPadding: EdgeInsets.all(4),
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -86,33 +125,35 @@ class LoginScreenComponent extends StatelessWidget {
                       onPresesd: () => {},
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                       child: RichText(
                         text: TextSpan(
-                            text: 'Nie masz konta? ',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'RobotoMono',
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Zarejestruj się',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      print('Button clicked');
-                                    },
-                                  style: TextStyle(
-                                    color:
-                                        myColors.themeData.colorScheme.primary,
-                                  ))
-                            ]),
+                          text: 'Nie masz konta? ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'RobotoMono',
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'Zarejestruj się',
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    print('Button clicked');
+                                  },
+                                style: TextStyle(
+                                  color: myColors.themeData.colorScheme.primary,
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                   ],
-                )),
-          ),
-        ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
