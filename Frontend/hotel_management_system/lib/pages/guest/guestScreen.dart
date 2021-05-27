@@ -5,6 +5,7 @@ import 'package:hotel_management_system/pages/guest/actualReservations.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 import 'package:hotel_management_system/pages/guest/reservationHistory.dart';
 import 'package:hotel_management_system/pages/guest/reserveRoomTile.dart';
+import 'package:hotel_management_system/pages/guest/informationsTile.dart';
 
 class GuestScreen extends StatelessWidget {
   const GuestScreen({Key key}) : super(key: key);
@@ -25,9 +26,26 @@ class GuestScreen extends StatelessWidget {
               child: Column(
                 children: [
                   TopBar(),
-                  ReservationHistory(),
-                  ReserveRoomtile(),
-                  ActualReservations(),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 24, 24, 36),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ReservationHistory(),
+                              ReserveRoomtile(),
+                              ActualReservations(),
+                            ],
+                          ),
+                          InformationsTile(),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

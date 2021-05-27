@@ -9,7 +9,7 @@ class ReserveRoomtile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicContainerShadow(
-      height: 150,
+      height: 130,
       width: 530,
       color: Theme.of(context).colorScheme.secondary,
       child: Column(

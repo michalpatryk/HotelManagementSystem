@@ -14,7 +14,7 @@ class _ReservationHistoryState extends State<ReservationHistory> {
   Widget build(BuildContext context) {
     return BasicContainerShadow(
       width: 530,
-      height: 310,
+      height: 260,
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -27,9 +27,19 @@ class _ReservationHistoryState extends State<ReservationHistory> {
             SizedBox(
               height: 24,
             ),
-            singleHistoryRow(),
-            singleHistoryRow(),
-            singleHistoryRow(),
+            Expanded(
+              child: ListView(children: [
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+                singleHistoryRow(),
+              ]),
+            ),
           ],
         ),
       ),

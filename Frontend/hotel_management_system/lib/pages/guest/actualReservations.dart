@@ -15,20 +15,31 @@ class _ActualReservationsState extends State<ActualReservations> {
   Widget build(BuildContext context) {
     return BasicContainerShadow(
       width: 530,
-      height: 310,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TileTitleBar(
-              icon: Icons.book,
-              title: "Aktualne rezerwacje i pobyty",
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: TileTitleBar(
+                icon: Icons.book,
+                title: "Aktualne rezerwacje i pobyty",
+              ),
             ),
-          ),
-          singleReservationRow(),
-          singleReservationRow(),
-          
-        ],
+            Expanded(
+              child: ListView(
+                children: [
+                  singleReservationRow(),
+                  singleReservationRow(),
+                  singleReservationRow(),
+                  singleReservationRow(),
+                  singleReservationRow(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
