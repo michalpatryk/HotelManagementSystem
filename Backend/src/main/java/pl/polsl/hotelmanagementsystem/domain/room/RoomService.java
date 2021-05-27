@@ -11,14 +11,14 @@ public class RoomService {
     private final RoomRepository roomRepository;
 
     public void addRoom(NewRoomDTO newRoomDTO){
-        if(roomRepository.findById(Long.getLong(newRoomDTO.getId())).isEmpty()){
+        if(roomRepository.findById(newRoomDTO.getId()).isEmpty()){
             Room room = Room.builder()
-                    .id(Long.getLong(newRoomDTO.getId()))
-                    .number(Integer.getInteger(newRoomDTO.getNumber()))
-                    .size(Integer.getInteger(newRoomDTO.getSize()))
-                    .floor(Integer.getInteger(newRoomDTO.getFloor()))
+                    .id(newRoomDTO.getId())
+                    .number(newRoomDTO.getNumber())
+                    .size(newRoomDTO.getSize())
+                    .floor(newRoomDTO.getFloor())
                     .description(newRoomDTO.getDescription())
-                    .price(Double.parseDouble(newRoomDTO.getPrice()))
+                    .price(newRoomDTO.getPrice())
                     .build();
             roomRepository.save(room);
         }

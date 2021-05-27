@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class NewRoomDTO {
-    String id;
-    String number;
-    String size;
-    String floor;
+    Long id;
+    Integer number;
+    Integer size;
+    Integer floor;
     String description;
-    String price;
+    Double price;
 }
