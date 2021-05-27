@@ -25,8 +25,8 @@ public class UserService {
         Authentication authentication =  authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword()));
         List<Client> clients =  clientRepository.findAll();
         String bearer;
-        if(authentication.getAuthorities().contains(Role.ROLE_CLIENT)){
-            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), Role.ROLE_CLIENT);
+        if(authentication.getAuthorities().contains(Role.CLIENT)){
+            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), Role.CLIENT);
         }
         else{
             bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), staffRepository.findByEmail(loginDTO.getEmail()).get().getRole());

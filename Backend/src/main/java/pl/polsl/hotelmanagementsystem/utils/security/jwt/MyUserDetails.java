@@ -25,25 +25,16 @@ public class MyUserDetails implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         final Optional<Client> client = clientRepository.findByEmail(username);
         if (client.isPresent()) {
-            //TODO: change to normal object, check why it doesnt work
             UserDetails user = User.withUsername(username)
                     .password(client.get().getPassword())
-                    .authorities(Role.ROLE_CLIENT)
+                    .authorities(Role.CLIENT)
                     .accountExpired(false)
                     .accountLocked(false)
                     .credentialsExpired(false)
                     .disabled(false)
                     .build();
 
-            return org.springframework.security.core.userdetails.User
-                    .withUsername(username)
-                    .password(client.get().getPassword())
-                    .authorities(Role.ROLE_CLIENT)
-                    .accountExpired(false)
-                    .accountLocked(false)
-                    .credentialsExpired(false)
-                    .disabled(false)
-                    .build();
+            return user;
         }
         else {
             final Optional<Staff> staff = staffRepository.findByEmail(username);
@@ -57,15 +48,7 @@ public class MyUserDetails implements UserDetailsService {
                         .disabled(false)
                         .build();
 
-                return org.springframework.security.core.userdetails.User
-                        .withUsername(username)
-                        .password(staff.get().getPassword())
-                        .authorities(staff.get().getRole())
-                        .accountExpired(false)
-                        .accountLocked(false)
-                        .credentialsExpired(false)
-                        .disabled(false)
-                        .build();
+                return user;
             }
 
         }
