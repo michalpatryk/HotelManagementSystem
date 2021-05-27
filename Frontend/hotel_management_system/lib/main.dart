@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
       home: MainContainer(
-        child: FrontPage(),
+        child: LoginScreen(),
       ),
     );
   }

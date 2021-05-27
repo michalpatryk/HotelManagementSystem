@@ -18,12 +18,12 @@ class FilledRoundedButton extends StatelessWidget {
             MaterialStateProperty.all(Theme.of(context).primaryColor),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
+            borderRadius: BorderRadius.circular(85.0),
             side: BorderSide(color: Theme.of(context).primaryColor),
           ),
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(
-          EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
+          EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
         ),
       ),
       onPressed: onPresesd,
@@ -32,7 +32,8 @@ class FilledRoundedButton extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: 16.0,
-          fontWeight: FontWeight.w500,
+          //fontWeight: FontWeight.w500,
+          fontFamily: 'RobotoMono',
         ),
       ),
     );
