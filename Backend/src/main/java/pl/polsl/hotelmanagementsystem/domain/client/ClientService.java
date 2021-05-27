@@ -3,11 +3,13 @@ package pl.polsl.hotelmanagementsystem.domain.client;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.hotelmanagementsystem.api.dto.SignUpDTO;
 import pl.polsl.hotelmanagementsystem.utils.exception.ObjectExistsException;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class ClientService {
     private final PasswordEncoder passwordEncoder;
     private final ClientRepository clientRepository;

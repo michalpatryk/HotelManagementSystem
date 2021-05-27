@@ -1,7 +1,6 @@
 package pl.polsl.hotelmanagementsystem.domain.room;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import pl.polsl.hotelmanagementsystem.domain.equipmentQuantity.EquipmentQuantity;
 import pl.polsl.hotelmanagementsystem.domain.expense.Expense;
 import pl.polsl.hotelmanagementsystem.domain.residence.Residence;
@@ -13,6 +12,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
