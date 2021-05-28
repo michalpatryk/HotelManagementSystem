@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_management_system/models/DatePicker/DateRangePickerModel.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
@@ -10,24 +11,27 @@ class CustomDateRangePicker extends StatefulWidget {
 
 /// State for MyApp
 class CustomDateRangePickerState extends State<CustomDateRangePicker> {
-  String _range = "";
-  DateTime _startDate = DateTime.now().add(const Duration(days: 1));
-  DateTime _endDate = DateTime.now().add(const Duration(days: 8));
-  int _allDays = 7;
+  DateRangePickerModel dates = new DateRangePickerModel();
   double _costPerDay = 250.0;
   double _wholeCost = 7 * 250.0;
   Function confirmButton;
 
+  @override
+  void initState() {
+    dates.blackoutDays = [
+      DateTime.now().add(const Duration(days: 1)),
+      DateTime.now().add(const Duration(days: 3)),
+    ];
+
+    super.initState();
+  }
+
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
       if (args.value is PickerDateRange) {
-        _range = DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
-            ' - ' +
-            DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate).toString();
-        _startDate = args.value.startDate;
-        _endDate = args.value.endDate ?? args.value.startDate;
-        _allDays = _endDate.difference(_startDate).inDays;
-        _wholeCost = _allDays * _costPerDay;
+        dates.startDate = args.value.startDate;
+        dates.endDate = args.value.endDate ?? args.value.startDate;
+        _wholeCost = dates.days * _costPerDay;
 
         validateDateRange();
       }
@@ -35,22 +39,17 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
   }
 
   validateDateRange() {
-    if (isBlackoutDaysContainsInRangeDate()) {
+    if (dates.isRangeContainsBlackoutDays()) {
       _showAlertDateDialog();
       confirmButton = null;
     } else {
       confirmButton = confirm;
     }
 
-    if (_allDays == 0) {
+    if (dates.days == 0) {
       confirmButton = null;
     }
   }
-
-  List<DateTime> _blackoutDates = [
-    DateTime.now().add(const Duration(days: 1)),
-    DateTime.now().add(const Duration(days: 3)),
-  ];
 
   confirm() {
     print("Confirm pressed");
@@ -59,13 +58,6 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
   goBack(BuildContext context) {
     print("GoBack pressed");
     Navigator.pop(context);
-  }
-
-  bool isBlackoutDaysContainsInRangeDate() {
-    for (var day in _blackoutDates) {
-      if (day.isAfter(_startDate) && day.isBefore(_endDate)) return true;
-    }
-    return false;
   }
 
   Future<void> _showAlertDateDialog() async {
@@ -141,9 +133,8 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
       selectionColor: Theme.of(context).primaryColor.withOpacity(.3),
       monthCellStyle: DateRangePickerMonthCellStyle(
           blackoutDateTextStyle: const TextStyle(color: Colors.red, decoration: TextDecoration.lineThrough)),
-      monthViewSettings: DateRangePickerMonthViewSettings(firstDayOfWeek: 1, blackoutDates: _blackoutDates),
+      monthViewSettings: DateRangePickerMonthViewSettings(firstDayOfWeek: 1, blackoutDates: dates.blackoutDays),
       selectionMode: DateRangePickerSelectionMode.range,
-      initialSelectedRange: PickerDateRange(_startDate, _endDate),
     );
   }
 
@@ -155,15 +146,15 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
             children: [
               ListTile(
                 leading: Text("Początek pobytu"),
-                trailing: Text(DateFormat('dd-MM-yyyy').format(_startDate).toString()),
+                trailing: Text(dates.startDateString),
               ),
               ListTile(
                 leading: Text("Koniec pobytu"),
-                trailing: Text(DateFormat('dd-MM-yyyy').format(_endDate).toString()),
+                trailing: Text(dates.endDateString),
               ),
               ListTile(
                 leading: Text("Ilość nocy"),
-                trailing: Text(_allDays.toString()),
+                trailing: Text(dates.days.toString()),
               ),
               ListTile(
                 leading: Text("Cena za dobę"),
