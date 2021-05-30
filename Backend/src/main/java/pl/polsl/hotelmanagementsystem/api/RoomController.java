@@ -1,7 +1,6 @@
 package pl.polsl.hotelmanagementsystem.api;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +11,11 @@ import pl.polsl.hotelmanagementsystem.domain.room.RoomService;
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "/rooms")
-public class RoomControler {
+public class RoomController {
     private final RoomService roomService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping(path = "/addRoom")
     public void addRoom(@RequestBody NewRoomDTO newRoomDTO){
         roomService.addRoom(newRoomDTO);

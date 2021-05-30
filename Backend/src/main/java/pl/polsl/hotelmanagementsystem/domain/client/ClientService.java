@@ -5,15 +5,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.hotelmanagementsystem.api.dto.SignUpDTO;
+import pl.polsl.hotelmanagementsystem.domain.user.Role;
 import pl.polsl.hotelmanagementsystem.utils.exception.ObjectExistsException;
+
+import java.util.LinkedList;
 
 @Service
 @AllArgsConstructor
-@Transactional
 public class ClientService {
     private final PasswordEncoder passwordEncoder;
     private final ClientRepository clientRepository;
 
+    @Transactional
     public String signUp(SignUpDTO signUpDTO){
         if(signUpDTO.getName() == null || signUpDTO.getSurname() == null || signUpDTO.getEmail() == null
         || signUpDTO.getRepeatedEmail() == null || signUpDTO.getPassword() == null || signUpDTO.getPostCode() == null
@@ -31,6 +34,8 @@ public class ClientService {
         if(clientRepository.findByEmail(signUpDTO.getEmail()).isPresent()){
             throw new ObjectExistsException("User with email " + signUpDTO.getEmail() + " exists!");
         }
+        LinkedList<Role> roles = new LinkedList<>();
+        roles.add(Role.ROLE_CLIENT);
         Client client = Client.builder()
                 .email(signUpDTO.getEmail())
                 .firstName(signUpDTO.getName())
@@ -40,9 +45,8 @@ public class ClientService {
                 .city(signUpDTO.getCity())
                 .address(signUpDTO.getAddress())
                 .phoneNumber(signUpDTO.getNumber())
-                //.password(signUpDTO.getPassword())
                 .password(passwordEncoder.encode(signUpDTO.getPassword()))
-
+                .roles(roles)
                 .build();
 
         clientRepository.save(client);

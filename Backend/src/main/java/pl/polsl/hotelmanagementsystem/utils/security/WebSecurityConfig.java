@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.polsl.hotelmanagementsystem.domain.user.Role;
 import pl.polsl.hotelmanagementsystem.utils.security.jwt.JwtTokenFilterConfigurer;
 import pl.polsl.hotelmanagementsystem.utils.security.jwt.JwtTokenProvider;
 
@@ -34,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/login").permitAll()
                 .antMatchers("/users/signup").permitAll()
                 //.antMatchers("/rooms/**").hasRole(Role.CLIENT.getAuthority())
-                //.antMatchers("/rooms/**").hasAnyRole()
+                .antMatchers("/rooms/**").hasAuthority(Role.ROLE_CLIENT.getAuthority())
                 .antMatchers("/v2/api-docs").permitAll()
                 .antMatchers("/swagger-resources").permitAll()
                 .antMatchers("/swagger-resources/configuration/ui").permitAll()

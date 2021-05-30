@@ -10,7 +10,6 @@ import pl.polsl.hotelmanagementsystem.domain.client.Client;
 import pl.polsl.hotelmanagementsystem.domain.client.ClientRepository;
 import pl.polsl.hotelmanagementsystem.domain.staff.Staff;
 import pl.polsl.hotelmanagementsystem.domain.staff.StaffRepository;
-import pl.polsl.hotelmanagementsystem.domain.user.Role;
 
 import java.util.Optional;
 
@@ -23,12 +22,12 @@ public class MyUserDetails implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //Hibernate.initialize();
         final Optional<Client> client = clientRepository.findByEmail(username);
         if (client.isPresent()) {
             UserDetails user = User.withUsername(username)
                     .password(client.get().getPassword())
-                    .roles(Role.CLIENT.name())
-                    .authorities(Role.CLIENT)
+                    .authorities(client.get().getRoles())
                     .accountExpired(false)
                     .accountLocked(false)
                     .credentialsExpired(false)
@@ -42,7 +41,7 @@ public class MyUserDetails implements UserDetailsService {
             if(staff.isPresent()){
                 UserDetails user = User.withUsername(username)
                         .password(staff.get().getPassword())
-                        .authorities(staff.get().getRole())
+                        .authorities(staff.get().getRoles())
                         .accountExpired(false)
                         .accountLocked(false)
                         .credentialsExpired(false)

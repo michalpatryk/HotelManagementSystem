@@ -6,12 +6,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import pl.polsl.hotelmanagementsystem.api.dto.LoginDTO;
-import pl.polsl.hotelmanagementsystem.domain.client.Client;
 import pl.polsl.hotelmanagementsystem.domain.client.ClientRepository;
 import pl.polsl.hotelmanagementsystem.domain.staff.StaffRepository;
 import pl.polsl.hotelmanagementsystem.utils.security.jwt.JwtTokenProvider;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -23,13 +20,13 @@ public class UserService {
 
     public String login(LoginDTO loginDTO){
         Authentication authentication =  authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword()));
-        List<Client> clients =  clientRepository.findAll();
+        //List<Client> clients =  clientRepository.findAll();
         String bearer;
-        if(authentication.getAuthorities().contains(Role.CLIENT)){
-            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), Role.CLIENT);
+        if(authentication.getAuthorities().contains(Role.ROLE_CLIENT)){
+            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), clientRepository.findByEmail(loginDTO.getEmail()).get().getRoles());
         }
         else{
-            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), staffRepository.findByEmail(loginDTO.getEmail()).get().getRole());
+            bearer = jwtTokenProvider.createToken(loginDTO.getEmail(), staffRepository.findByEmail(loginDTO.getEmail()).get().getRoles());
         }
         return "Bearer " + bearer;
     }

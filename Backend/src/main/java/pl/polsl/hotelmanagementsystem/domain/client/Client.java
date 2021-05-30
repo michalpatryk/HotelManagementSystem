@@ -4,6 +4,7 @@ import lombok.*;
 import pl.polsl.hotelmanagementsystem.domain.checkedIn.CheckedIn;
 import pl.polsl.hotelmanagementsystem.domain.reservation.Reservation;
 import pl.polsl.hotelmanagementsystem.domain.roomIssue.RoomIssue;
+import pl.polsl.hotelmanagementsystem.domain.user.Role;
 
 import javax.persistence.*;
 import java.util.List;
@@ -33,6 +34,6 @@ public class Client {
     private List<Reservation> reservations;
     @OneToMany
     private List<CheckedIn> checkedIns;
-
-    //private Role role;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Role> roles;
 }
