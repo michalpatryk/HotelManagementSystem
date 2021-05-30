@@ -42,6 +42,6 @@ public class SpringFoxConfig {
         return singletonList(new SecurityReference("apiKey", authorizationScopes));
     }
     private SecurityScheme createSchema(){
-        return new ApiKey("apiKey", "Bearer", "header");
+        return new ApiKey("apiKey", "Authorization", "header");
     }
 }

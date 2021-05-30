@@ -27,6 +27,7 @@ public class MyUserDetails implements UserDetailsService {
         if (client.isPresent()) {
             UserDetails user = User.withUsername(username)
                     .password(client.get().getPassword())
+                    .roles(Role.CLIENT.name())
                     .authorities(Role.CLIENT)
                     .accountExpired(false)
                     .accountLocked(false)

@@ -27,11 +27,12 @@ public class Client {
     private String address;
     private String phoneNumber;
     private String password;
-
     @OneToMany
     private List<RoomIssue> roomIssues;
     @OneToMany
     private List<Reservation> reservations;
     @OneToMany
     private List<CheckedIn> checkedIns;
+
+    //private Role role;
 }

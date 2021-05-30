@@ -42,6 +42,7 @@ public class ClientService {
                 .phoneNumber(signUpDTO.getNumber())
                 //.password(signUpDTO.getPassword())
                 .password(passwordEncoder.encode(signUpDTO.getPassword()))
+
                 .build();
 
         clientRepository.save(client);
