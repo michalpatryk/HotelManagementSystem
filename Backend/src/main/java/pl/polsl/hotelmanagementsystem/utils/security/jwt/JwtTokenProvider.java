@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import pl.polsl.hotelmanagementsystem.domain.user.Role;
+import pl.polsl.hotelmanagementsystem.service.user.Role;
 
 import javax.annotation.PostConstruct;
 import javax.crypto.spec.SecretKeySpec;

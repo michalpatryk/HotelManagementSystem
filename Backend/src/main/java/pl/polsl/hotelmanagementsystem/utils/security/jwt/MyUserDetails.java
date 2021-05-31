@@ -6,10 +6,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.polsl.hotelmanagementsystem.domain.client.Client;
-import pl.polsl.hotelmanagementsystem.domain.client.ClientRepository;
-import pl.polsl.hotelmanagementsystem.domain.staff.Staff;
-import pl.polsl.hotelmanagementsystem.domain.staff.StaffRepository;
+import pl.polsl.hotelmanagementsystem.service.client.Client;
+import pl.polsl.hotelmanagementsystem.service.client.ClientRepository;
+import pl.polsl.hotelmanagementsystem.service.staff.Staff;
+import pl.polsl.hotelmanagementsystem.service.staff.StaffRepository;
 
 import java.util.Optional;
 
