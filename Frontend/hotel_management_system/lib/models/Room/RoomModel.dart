@@ -23,8 +23,8 @@ class Room extends Equatable {
       id: json['id'],
       name: json['name'],
       size: json['size'],
-      price: json['price'],
-      imageURL: json['imageURL'],
+      price: double.parse(json['price'].toString()),
+      imageURL: Uri.parse(json['imageURL']),
     );
   }
 }

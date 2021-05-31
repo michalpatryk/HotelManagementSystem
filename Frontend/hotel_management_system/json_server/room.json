@@ -1,0 +1,11 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Apartament",
+      "size": 4,
+      "price": 250.0,
+      "imageURL": "https://fromsmash.com/" 
+    }
+  ]
+}
