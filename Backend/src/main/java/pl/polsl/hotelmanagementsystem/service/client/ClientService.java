@@ -1,6 +1,7 @@
 package pl.polsl.hotelmanagementsystem.service.client;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,7 @@ import pl.polsl.hotelmanagementsystem.service.user.Role;
 import pl.polsl.hotelmanagementsystem.utils.exception.ObjectExistsException;
 import pl.polsl.hotelmanagementsystem.utils.security.jwt.JwtTokenProvider;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 
@@ -70,6 +72,13 @@ public class ClientService {
                  .city(client.getCity())
                  .address(client.getAddress())
                  .build();
+    }
+    public Client whoami(){
+        return search(SecurityContextHolder.getContext().getAuthentication().getName());
+    }
+    private Client search(String email){
+        return clientRepository.findByEmail(email).orElseThrow(()
+                -> new EntityNotFoundException("User with email" + email + "does not exist"));
     }
 
 }
