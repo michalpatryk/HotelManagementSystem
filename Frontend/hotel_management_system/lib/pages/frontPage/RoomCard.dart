@@ -4,11 +4,11 @@ import 'package:hotel_management_system/components/filledRoundedButton.dart';
 import 'FullPageDateRangePickerDialog.dart';
 
 class RoomCard extends StatelessWidget {
-  const RoomCard({Key key, this.roomSize, this.roomName, this.price}) : super(key: key);
+  const RoomCard({Key? key, this.roomSize, this.roomName, this.price}) : super(key: key);
 
-  final int roomSize;
-  final int price;
-  final String roomName;
+  final int? roomSize;
+  final int? price;
+  final String? roomName;
 
   expandMore() {
     print("Expand pressed");
@@ -45,7 +45,7 @@ class RoomCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          roomName,
+          roomName!,
           style: TextStyle(
             fontSize: 20,
             color: Theme.of(context).colorScheme.secondary,

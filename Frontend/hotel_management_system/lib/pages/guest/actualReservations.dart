@@ -4,7 +4,7 @@ import 'package:hotel_management_system/pages/guest/tileTitleBar.dart';
 import 'package:hotel_management_system/components/IconText.dart';
 
 class ActualReservations extends StatefulWidget {
-  ActualReservations({Key key}) : super(key: key);
+  ActualReservations({Key? key}) : super(key: key);
 
   @override
   _ActualReservationsState createState() => _ActualReservationsState();

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class FilledRoundedButton extends StatelessWidget {
   const FilledRoundedButton({
-    Key key,
+    Key? key,
     this.buttonText,
     this.onPresesd,
   }) : super(key: key);
 
-  final String buttonText;
-  final Function onPresesd;
+  final String? buttonText;
+  final Function? onPresesd;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,9 @@ class FilledRoundedButton extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
         ),
       ),
-      onPressed: onPresesd,
+      onPressed: onPresesd as void Function()?,
       child: Text(
-        buttonText.toUpperCase(),
+        buttonText!.toUpperCase(),
         style: TextStyle(
           color: Colors.white,
           fontSize: 16.0,
