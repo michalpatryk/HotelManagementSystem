@@ -8,19 +8,19 @@ import 'package:built_value/built_value.dart';
 import 'Bed.dart';
 
 class Room extends Equatable {
-  int id;
-  String name;
-  int size;
-  double price;
-  List<Bed> beds;
-  List<RoomType> rooms;
-  List<DateTime> blackoutDays;
-  Uri imageURL;
+  int? id;
+  String? name;
+  int? size;
+  double? price;
+  List<Bed>? beds;
+  List<RoomType>? rooms;
+  List<DateTime>? blackoutDays;
+  Uri? imageURL;
 
   Room({this.id, this.name, this.size, this.beds, this.rooms, this.blackoutDays, this.imageURL, this.price});
 
   @override
-  List<Object> get props => [id, name, size, price, beds, rooms, blackoutDays];
+  List<Object?> get props => [id, name, size, price, beds, rooms, blackoutDays];
 
   static Room fromJson(dynamic json) {
     List<dynamic> bedsJson = json['beds'];

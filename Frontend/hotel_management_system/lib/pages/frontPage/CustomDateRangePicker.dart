@@ -14,7 +14,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
   DateRangePickerModel dates = new DateRangePickerModel();
   double _costPerDay = 250.0;
   double _wholeCost = 7 * 250.0;
-  Function confirmButton;
+  Function? confirmButton;
 
   @override
   void initState() {
@@ -178,7 +178,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker> {
               width: 20.0,
             ),
             TextButton(
-              onPressed: confirmButton,
+              onPressed: confirmButton as void Function()?,
               child: Text("Zatwierdź".toUpperCase()),
             ),
           ],

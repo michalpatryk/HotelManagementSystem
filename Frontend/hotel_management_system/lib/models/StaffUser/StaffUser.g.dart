@@ -15,29 +15,49 @@ class _$StaffUserSerializer implements StructuredSerializer<StaffUser> {
   final String wireName = 'StaffUser';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, StaffUser object,
+  Iterable<Object?> serialize(Serializers serializers, StaffUser object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(int)),
-      'login',
-      serializers.serialize(object.login,
-          specifiedType: const FullType(String)),
-      'firstName',
-      serializers.serialize(object.firstName,
-          specifiedType: const FullType(String)),
-      'lastName',
-      serializers.serialize(object.lastName,
-          specifiedType: const FullType(String)),
-      'role',
-      serializers.serialize(object.role, specifiedType: const FullType(String)),
-    ];
-
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.login;
+    if (value != null) {
+      result
+        ..add('login')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.firstName;
+    if (value != null) {
+      result
+        ..add('firstName')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.lastName;
+    if (value != null) {
+      result
+        ..add('lastName')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.role;
+    if (value != null) {
+      result
+        ..add('role')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
   @override
-  StaffUser deserialize(Serializers serializers, Iterable<Object> serialized,
+  StaffUser deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StaffUserBuilder();
 
@@ -45,7 +65,7 @@ class _$StaffUserSerializer implements StructuredSerializer<StaffUser> {
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
@@ -76,27 +96,21 @@ class _$StaffUserSerializer implements StructuredSerializer<StaffUser> {
 
 class _$StaffUser extends StaffUser {
   @override
-  final int id;
+  final int? id;
   @override
-  final String login;
+  final String? login;
   @override
-  final String firstName;
+  final String? firstName;
   @override
-  final String lastName;
+  final String? lastName;
   @override
-  final String role;
+  final String? role;
 
-  factory _$StaffUser([void Function(StaffUserBuilder) updates]) =>
+  factory _$StaffUser([void Function(StaffUserBuilder)? updates]) =>
       (new StaffUserBuilder()..update(updates)).build();
 
   _$StaffUser._({this.id, this.login, this.firstName, this.lastName, this.role})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'StaffUser', 'id');
-    BuiltValueNullFieldError.checkNotNull(login, 'StaffUser', 'login');
-    BuiltValueNullFieldError.checkNotNull(firstName, 'StaffUser', 'firstName');
-    BuiltValueNullFieldError.checkNotNull(lastName, 'StaffUser', 'lastName');
-    BuiltValueNullFieldError.checkNotNull(role, 'StaffUser', 'role');
-  }
+      : super._();
 
   @override
   StaffUser rebuild(void Function(StaffUserBuilder) updates) =>
@@ -137,27 +151,27 @@ class _$StaffUser extends StaffUser {
 }
 
 class StaffUserBuilder implements Builder<StaffUser, StaffUserBuilder> {
-  _$StaffUser _$v;
+  _$StaffUser? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _login;
-  String get login => _$this._login;
-  set login(String login) => _$this._login = login;
+  String? _login;
+  String? get login => _$this._login;
+  set login(String? login) => _$this._login = login;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
-  String _role;
-  String get role => _$this._role;
-  set role(String role) => _$this._role = role;
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
 
   StaffUserBuilder();
 
@@ -181,7 +195,7 @@ class StaffUserBuilder implements Builder<StaffUser, StaffUserBuilder> {
   }
 
   @override
-  void update(void Function(StaffUserBuilder) updates) {
+  void update(void Function(StaffUserBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -189,15 +203,11 @@ class StaffUserBuilder implements Builder<StaffUser, StaffUserBuilder> {
   _$StaffUser build() {
     final _$result = _$v ??
         new _$StaffUser._(
-            id: BuiltValueNullFieldError.checkNotNull(id, 'StaffUser', 'id'),
-            login: BuiltValueNullFieldError.checkNotNull(
-                login, 'StaffUser', 'login'),
-            firstName: BuiltValueNullFieldError.checkNotNull(
-                firstName, 'StaffUser', 'firstName'),
-            lastName: BuiltValueNullFieldError.checkNotNull(
-                lastName, 'StaffUser', 'lastName'),
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, 'StaffUser', 'role'));
+            id: id,
+            login: login,
+            firstName: firstName,
+            lastName: lastName,
+            role: role);
     replace(_$result);
     return _$result;
   }

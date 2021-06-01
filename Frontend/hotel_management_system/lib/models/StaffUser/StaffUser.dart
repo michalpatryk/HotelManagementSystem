@@ -8,18 +8,18 @@ part 'StaffUser.g.dart';
 
 abstract class StaffUser implements Built<StaffUser, StaffUserBuilder> {
   StaffUser._();
-  factory StaffUser([updates(StaffUserBuilder b)]) = _$StaffUser;
+  factory StaffUser([updates(StaffUserBuilder b)?]) = _$StaffUser;
 
   static Serializer<StaffUser> get serializer => _$staffUserSerializer;
 
-  int get id;
-  String get login;
-  String get firstName;
-  String get lastName;
-  String get role;
+  int? get id;
+  String? get login;
+  String? get firstName;
+  String? get lastName;
+  String? get role;
   String get fullName => "$firstName $lastName";
 
-  static StaffUser fromJson(String jsonString) {
+  static StaffUser? fromJson(String jsonString) {
     return serializers.deserializeWith(serializer, json.decode(jsonString));
   }
 }

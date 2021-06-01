@@ -1,6 +1,6 @@
 abstract class RoomType {
   const RoomType({this.count});
-  final int count;
+  final int? count;
 
   @override
   String toString();
@@ -27,7 +27,7 @@ abstract class RoomType {
 
 class Livingroom extends RoomType {
   const Livingroom({this.count});
-  final int count;
+  final int? count;
 
   @override
   String toString() {
@@ -37,7 +37,7 @@ class Livingroom extends RoomType {
 
 class Kitchen extends RoomType {
   const Kitchen({this.count});
-  final int count;
+  final int? count;
 
   @override
   String toString() {
@@ -47,7 +47,7 @@ class Kitchen extends RoomType {
 
 class Bedroom extends RoomType {
   const Bedroom({this.count});
-  final int count;
+  final int? count;
 
   @override
   String toString() {
@@ -57,7 +57,7 @@ class Bedroom extends RoomType {
 
 class Bathroom extends RoomType {
   const Bathroom({this.count});
-  final int count;
+  final int? count;
 
   @override
   String toString() {

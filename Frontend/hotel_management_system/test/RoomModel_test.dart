@@ -21,14 +21,14 @@ void main() {
     expect(room.name, "Apartament");
     expect(room.imageURL, Uri.parse("https://fromsmash.com/"));
 
-    expect(room.beds.length, 2);
-    expect(room.rooms.length, 4);
+    expect(room.beds!.length, 2);
+    expect(room.rooms!.length, 4);
 
-    room.beds.forEach((bed) {
+    room.beds!.forEach((bed) {
       print(bed.toString());
     });
 
-    room.rooms.forEach((room) {
+    room.rooms!.forEach((room) {
       print(room.toString());
     });
   });

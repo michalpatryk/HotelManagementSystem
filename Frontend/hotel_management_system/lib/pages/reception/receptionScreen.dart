@@ -4,7 +4,7 @@ import 'package:hotel_management_system/components/topBar.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 class ReceptionScreen extends StatelessWidget {
-  const ReceptionScreen({Key key}) : super(key: key);
+  const ReceptionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

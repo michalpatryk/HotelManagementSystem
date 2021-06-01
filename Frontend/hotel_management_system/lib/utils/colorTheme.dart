@@ -7,7 +7,7 @@ class ColorTheme {
   ThemeData get themeData {
     /// Create a TextTheme and ColorScheme, that we can use to generate ThemeData
     TextTheme txtTheme = ThemeData.light().textTheme;
-    Color txtColor = txtTheme.bodyText1.color;
+    Color txtColor = txtTheme.bodyText1!.color!;
     ColorScheme colorScheme = ColorScheme(
         // Decide how you want to apply your own custom them, to the MaterialApp
         brightness: Brightness.light,

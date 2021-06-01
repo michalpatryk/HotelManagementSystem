@@ -5,7 +5,7 @@ abstract class Bed {
   const Bed({this.count});
 
   int get size;
-  final int count;
+  final int? count;
 
   @override
   String toString();
@@ -28,7 +28,7 @@ class SingleBed extends Bed {
   const SingleBed({this.count});
 
   int get size => 1;
-  final int count;
+  final int? count;
   @override
   String toString() {
     return "pojedyńcze";
@@ -39,7 +39,7 @@ class MatrimonialBed extends Bed {
   const MatrimonialBed({this.count});
 
   int get size => 2;
-  final int count;
+  final int? count;
 
   @override
   String toString() {

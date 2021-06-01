@@ -3,7 +3,7 @@ import 'package:hotel_management_system/components/basicContainerShadow.dart';
 import 'package:hotel_management_system/pages/guest/tileTitleBar.dart';
 
 class ReservationHistory extends StatefulWidget {
-  ReservationHistory({Key key}) : super(key: key);
+  ReservationHistory({Key? key}) : super(key: key);
 
   @override
   _ReservationHistoryState createState() => _ReservationHistoryState();

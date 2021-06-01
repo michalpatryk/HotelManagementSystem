@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MainContainer extends StatelessWidget {
   MainContainer({this.child});
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
