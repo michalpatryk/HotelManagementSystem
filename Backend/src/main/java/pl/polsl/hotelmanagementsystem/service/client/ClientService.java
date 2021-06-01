@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.polsl.hotelmanagementsystem.controller.dto.ClientDetailsDTO;
 import pl.polsl.hotelmanagementsystem.controller.dto.SignUpDTO;
 import pl.polsl.hotelmanagementsystem.service.user.Role;
 import pl.polsl.hotelmanagementsystem.utils.exception.ObjectExistsException;
+import pl.polsl.hotelmanagementsystem.utils.security.jwt.JwtTokenProvider;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 
 @Service
@@ -15,6 +18,7 @@ import java.util.LinkedList;
 public class ClientService {
     private final PasswordEncoder passwordEncoder;
     private final ClientRepository clientRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     public String signUp(SignUpDTO signUpDTO){
@@ -51,6 +55,21 @@ public class ClientService {
 
         clientRepository.save(client);
         return "Zarejestrowany";
+    }
+    public ClientDetailsDTO getClientDetails(HttpServletRequest httpServletRequest){
+         Client client = clientRepository.findByEmail(
+                jwtTokenProvider.getUsername(
+                        jwtTokenProvider.resolveToken(httpServletRequest))).orElseThrow(IllegalAccessError::new);
+         return ClientDetailsDTO.builder()
+                 .name(client.getFirstName())
+                 .surname(client.getLastName())
+                 .email(client.getEmail())
+                 .postCode(client.getPostCode())
+                 .number(client.getPhoneNumber())
+                 .country(client.getCountry())
+                 .city(client.getCity())
+                 .address(client.getAddress())
+                 .build();
     }
 
 }

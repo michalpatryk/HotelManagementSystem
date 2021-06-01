@@ -36,9 +36,9 @@ public class RoomControllerTests {
 
 
     @Test
-    @WithMockUser(username = "username", password = "password", roles = {"ADMIN"})
+    @WithMockUser(username = "username", roles = {"ADMIN"})
     public void shouldAddRoom() throws Exception{
-        NewRoomDTO newRoomDTO = new NewRoomDTO(0l, 1, 1, 1, "test", 10d);
+        NewRoomDTO newRoomDTO = new NewRoomDTO(0L, 1, 1, 1, "test", 10d);
         ObjectMapper objectMapper = new ObjectMapper();
         String roomJSON = objectMapper.writeValueAsString(newRoomDTO);
         mockMvc.perform(post(ROOMS + "/addRoom").contentType("application/json").content(roomJSON))
@@ -46,7 +46,7 @@ public class RoomControllerTests {
     }
 
     @Test
-    @WithMockUser(username = "username", password = "password", roles = {"CLIENT"})
+    @WithMockUser(username = "username", roles = {"CLIENT"})
     public void shouldNotAddRoom() throws Exception{
         mockMvc.perform(post(ROOMS + "/addRoom")).andDo(print()).andExpect(status().isForbidden());
     }

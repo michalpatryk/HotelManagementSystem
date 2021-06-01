@@ -6,6 +6,8 @@ import pl.polsl.hotelmanagementsystem.controller.dto.NewRoomDTO;
 import pl.polsl.hotelmanagementsystem.service.room.Room;
 import pl.polsl.hotelmanagementsystem.service.room.RoomService;
 
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -21,5 +23,10 @@ public class RoomController {
     @GetMapping(path = "/getAllRooms")
     public List<Room> getAllRooms(){
         return roomService.getAllRooms();
+    }
+    @GetMapping(path = "/{id}/blackoutDays")
+    public List<Date> getRoomBlackoutDays(@PathVariable("id") Long id){
+        //TODO
+        return new LinkedList<>();
     }
 }

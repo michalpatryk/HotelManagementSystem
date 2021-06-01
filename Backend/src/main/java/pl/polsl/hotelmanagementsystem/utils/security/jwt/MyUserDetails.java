@@ -25,7 +25,8 @@ public class MyUserDetails implements UserDetailsService {
         //Hibernate.initialize();
         final Optional<Client> client = clientRepository.findByEmail(username);
         if (client.isPresent()) {
-            UserDetails user = User.withUsername(username)
+
+            return User.withUsername(username)
                     .password(client.get().getPassword())
                     .roles("CLIENT")
                     .authorities(client.get().getRoles())
@@ -34,13 +35,12 @@ public class MyUserDetails implements UserDetailsService {
                     .credentialsExpired(false)
                     .disabled(false)
                     .build();
-
-            return user;
         }
         else {
             final Optional<Staff> staff = staffRepository.findByEmail(username);
             if(staff.isPresent()){
-                UserDetails user = User.withUsername(username)
+
+                return User.withUsername(username)
                         .password(staff.get().getPassword())
                         .authorities(staff.get().getRoles())
                         .accountExpired(false)
@@ -48,8 +48,6 @@ public class MyUserDetails implements UserDetailsService {
                         .credentialsExpired(false)
                         .disabled(false)
                         .build();
-
-                return user;
             }
 
         }

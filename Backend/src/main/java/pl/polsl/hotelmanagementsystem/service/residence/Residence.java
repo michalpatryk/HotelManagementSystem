@@ -13,7 +13,6 @@ public class Residence {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
-    //TODO: checked in
     @OneToMany
     private List<CheckedIn> checkedIns;
     @OneToMany

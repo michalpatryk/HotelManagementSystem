@@ -32,7 +32,7 @@ public class RoomServiceTests {
     @WithMockUser(authorities = "CLIENT")
     //@WithMockUser(authorities = {"ROLE_ADMIN"}, roles = {"ROLE_ADMIN"})
     void shouldReturnAllRooms(){
-        NewRoomDTO newRoomDTO = new NewRoomDTO(0l, 1, 1, 1, "test", 10d);
+        NewRoomDTO newRoomDTO = new NewRoomDTO(0L, 1, 1, 1, "test", 10d);
         Room room = Room.builder()
                 .id(newRoomDTO.getId())
                 .number(newRoomDTO.getNumber())
@@ -51,7 +51,7 @@ public class RoomServiceTests {
     @Test
     //@WithMockUser(authorities = {"ROLE_ADMIN"}, roles = {"ROLE_ADMIN"})
     void shouldAddRoom(){
-        NewRoomDTO newRoomDTO = new NewRoomDTO(0l, 1, 1, 1, "test", 10d);
+        NewRoomDTO newRoomDTO = new NewRoomDTO(0L, 1, 1, 1, "test", 10d);
         Room room = Room.builder()
                 .id(newRoomDTO.getId())
                 .number(newRoomDTO.getNumber())
@@ -63,7 +63,7 @@ public class RoomServiceTests {
         List<Room> rooms = new LinkedList<>();
         rooms.add(room);
         Mockito.when(roomRepository.findAll()).thenReturn(rooms);
-        Mockito.when(roomRepository.findById(0l)).thenReturn(Optional.empty());
+        Mockito.when(roomRepository.findById(0L)).thenReturn(Optional.empty());
         Mockito.when(roomRepository.save(any(Room.class))).thenReturn(room);
         roomService.addRoom(newRoomDTO);
         assertEquals(rooms, roomService.getAllRooms());
