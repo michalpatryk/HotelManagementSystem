@@ -3,7 +3,7 @@ import 'package:hotel_management_system/components/outlinedRoundedButton.dart';
 
 class FrontPageAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FrontPageAppBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   signIn() {

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class BasicContainerShadow extends StatelessWidget {
   const BasicContainerShadow(
-      {Key key, this.width, this.height, this.child, this.color = Colors.white})
+      {Key? key, this.width, this.height, this.child, this.color = Colors.white})
       : super(key: key);
 
-  final double width;
-  final double height;
-  final Widget child;
+  final double? width;
+  final double? height;
+  final Widget? child;
   final Color color;
 
   @override
