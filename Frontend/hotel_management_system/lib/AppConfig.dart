@@ -1,9 +1,3 @@
-import 'package:meta/meta.dart';
-
 class AppConfig {
-  AppConfig({
-    @required this.apiBaseUrl,
-  });
-
-  final String apiBaseUrl;
+  static const String apiBaseUrl = "localhost:5000";
 }

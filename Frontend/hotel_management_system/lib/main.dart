@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_management_system/AppConfig.dart';
 import 'package:hotel_management_system/components/topBar.dart';
 import 'package:hotel_management_system/pages/login/loginScreen.dart';
 import 'package:hotel_management_system/pages/login/loginScreenComponent.dart';
