@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:hotel_management_system/models/models.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
@@ -18,5 +20,16 @@ void main() {
     expect(room.id, 1);
     expect(room.name, "Apartament");
     expect(room.imageURL, Uri.parse("https://fromsmash.com/"));
+
+    expect(room.beds.length, 2);
+    expect(room.rooms.length, 4);
+
+    room.beds.forEach((bed) {
+      print(bed.toString());
+    });
+
+    room.rooms.forEach((room) {
+      print(room.toString());
+    });
   });
 }

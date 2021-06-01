@@ -1,4 +1,4 @@
-export './Room/RoomModel.dart';
+export 'Room/Room.dart';
 export 'StaffUser/StaffUser.dart';
 
-export './serializers.dart';
+export '../serializers/serializers.dart';

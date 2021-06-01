@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:hotel_management_system/serializers/serializers.dart';
 
 part 'StaffUser.g.dart';
 
@@ -15,4 +18,8 @@ abstract class StaffUser implements Built<StaffUser, StaffUserBuilder> {
   String get lastName;
   String get role;
   String get fullName => "$firstName $lastName";
+
+  static StaffUser fromJson(String jsonString) {
+    return serializers.deserializeWith(serializer, json.decode(jsonString));
+  }
 }
