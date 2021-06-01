@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.polsl.hotelmanagementsystem.controller.dto.AddReservationDTO;
 import pl.polsl.hotelmanagementsystem.controller.dto.ClientDetailsDTO;
 import pl.polsl.hotelmanagementsystem.controller.dto.SignUpDTO;
 import pl.polsl.hotelmanagementsystem.service.client.ClientService;
@@ -26,4 +27,6 @@ public class ClientController {
     public ClientDetailsDTO getMyDetails(HttpServletRequest request){
         return clientService.getClientDetails(request);
     }
+
+
 }
