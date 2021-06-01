@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_management_system/components/navigationComponent.dart';
 import 'package:hotel_management_system/components/topBar.dart';
+import 'package:hotel_management_system/pages/reception/components/clientDataWidget.dart';
+import 'package:hotel_management_system/pages/reception/components/clientFoodWidget.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
+
+import 'components/clientStayWidget.dart';
+import 'components/clientTopBarWidget.dart';
 
 class ReceptionScreen extends StatelessWidget {
   const ReceptionScreen({Key key}) : super(key: key);
@@ -9,6 +14,7 @@ class ReceptionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Row(
         children: <Widget>[
           Container(
@@ -33,7 +39,7 @@ class ReceptionScreen extends StatelessWidget {
                                   child: TextField(
                                     decoration: new InputDecoration(
                                         border: new OutlineInputBorder(
-                                          borderSide: new BorderSide(color: Colors.teal),
+                                          borderSide: new BorderSide(color: Theme.of(context).primaryColor),
                                           borderRadius: BorderRadius.all(Radius.circular(30)),
                                         ),
                                         suffixIcon: Icon(Icons.search, color: Theme.of(context).primaryColor),
@@ -75,9 +81,10 @@ class ReceptionScreen extends StatelessWidget {
                                   ),
                                 ),
                                 Expanded(
+                                  flex: 2,
                                   child: Container(
                                     child: ListView.builder(
-                                      itemCount: 10,
+                                      itemCount: 20,
                                       itemBuilder: (context, index) {
                                         return ListTile(
                                           title: InkWell(
@@ -132,6 +139,10 @@ class ReceptionScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(),
+                                )
                               ],
                             ),
                           ),
@@ -139,8 +150,31 @@ class ReceptionScreen extends StatelessWidget {
                       ),
                       Expanded(
                         flex: 5,
-                        child: Container(
-                          color: Colors.red,
+                        child: Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: Column(
+                            children: [
+                              ClientTopBar(),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    ClientDataWidget(),
+                                    ClientStayWidget(),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Expanded(child: Container()),
+                                    Expanded(child: ClientFoodWidget()),
+                                    Expanded(child: Container()),
+                                  ],
+                                ),
+                              ),
+                              Expanded(child: Container()),
+                            ],
+                          ),
                         ),
                       ),
                     ],
