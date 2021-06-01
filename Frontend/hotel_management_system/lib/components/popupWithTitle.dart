@@ -4,14 +4,14 @@ import 'package:hotel_management_system/components/roundButton.dart';
 
 class PopupWithTitle extends StatelessWidget {
   const PopupWithTitle(
-      {Key key,
+      {Key? key,
       this.title = "Title",
       this.icon = Icons.add,
       this.content = const Text("Content"),
       this.button1Text = "button1",
       this.button2Text = "button2",
       this.onButton1Pressed,
-      this.onButton2Pressed})
+      this.onButton2Pressed })
       : super(key: key);
 
   final String title;
@@ -19,8 +19,8 @@ class PopupWithTitle extends StatelessWidget {
   final Widget content;
   final String button1Text;
   final String button2Text;
-  final Function onButton1Pressed;
-  final Function onButton2Pressed;
+  final Function? onButton1Pressed;
+  final Function? onButton2Pressed;
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,7 @@ class PopupWithTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextButton(
-                
-                onPressed: onButton1Pressed,
+                onPressed: onButton1Pressed as void Function()?,
                 child: Text(
                   button1Text.toUpperCase(),
                 ),

@@ -10,7 +10,7 @@ class IconText extends StatelessWidget {
       this.onTap})
       : super(key: key);
 
-  final Function onTap;
+  final Function? onTap;
   final IconData icon;
   final String text;
   final Color color;
@@ -21,7 +21,7 @@ class IconText extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
-        onTap: onTap,
+        onTap: onTap as void Function()?,
         hoverColor: Colors.transparent,
         splashColor: Theme.of(context).primaryColor.withOpacity(0.2),
         highlightColor: Theme.of(context).primaryColor.withOpacity(0.4),
