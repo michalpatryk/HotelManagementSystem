@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class IconText extends StatelessWidget {
   const IconText(
-      {Key key,
+      {Key? key,
       this.icon = Icons.add,
       this.text = "IconText",
       this.color = Colors.black87,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 class NavigationComponent extends StatefulWidget {
-  NavigationComponent({Key key}) : super(key: key);
+  NavigationComponent({Key? key}) : super(key: key);
 
   @override
   _NavigationComponentState createState() => _NavigationComponentState();

@@ -8,7 +8,7 @@ import 'package:hotel_management_system/pages/guest/reserveRoomTile.dart';
 import 'package:hotel_management_system/pages/guest/informationsTile.dart';
 
 class GuestScreen extends StatelessWidget {
-  const GuestScreen({Key key}) : super(key: key);
+  const GuestScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

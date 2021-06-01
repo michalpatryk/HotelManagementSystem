@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RoundButton extends StatefulWidget {
-  RoundButton({Key key, this.text="rounded button", this.color=Colors.red, this.padding = const EdgeInsets.all(10.0)}) : super(key: key);
+  RoundButton({Key? key, this.text="rounded button", this.color=Colors.red, this.padding = const EdgeInsets.all(10.0)}) : super(key: key);
 
   final String text;
   final Color color;

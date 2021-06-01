@@ -4,7 +4,7 @@ import 'package:hotel_management_system/components/basicContainerShadow.dart';
 import 'package:hotel_management_system/pages/guest/tileTitleBar.dart';
 
 class InformationsTile extends StatelessWidget {
-  const InformationsTile({Key key}) : super(key: key);
+  const InformationsTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TileTitleBar extends StatelessWidget {
-  const TileTitleBar({Key key, this.title = "Title bar", this.icon = Icons.add, this.color = Colors.black87}) : super(key: key);
+  const TileTitleBar({Key? key, this.title = "Title bar", this.icon = Icons.add, this.color = Colors.black87}) : super(key: key);
 
   final String title;
   final IconData icon;

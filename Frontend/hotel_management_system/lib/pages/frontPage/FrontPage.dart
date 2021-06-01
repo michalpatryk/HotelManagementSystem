@@ -5,7 +5,7 @@ import 'package:hotel_management_system/pages/frontPage/FrontPageAppBar.dart';
 import 'RoomCard.dart';
 
 class FrontPage extends StatelessWidget {
-  const FrontPage({Key key}) : super(key: key);
+  const FrontPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

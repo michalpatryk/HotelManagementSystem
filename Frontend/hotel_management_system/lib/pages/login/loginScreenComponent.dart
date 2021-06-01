@@ -5,7 +5,7 @@ import 'package:hotel_management_system/components/filledRoundedButton.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
 
 class LoginScreenComponent extends StatelessWidget {
-  const LoginScreenComponent({Key key}) : super(key: key);
+  const LoginScreenComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
