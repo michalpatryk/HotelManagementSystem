@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ClientFoodWidget extends StatelessWidget {
-  const ClientFoodWidget({Key key}) : super(key: key);
+  const ClientFoodWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

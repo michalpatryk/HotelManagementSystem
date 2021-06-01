@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ClientStayWidget extends StatelessWidget {
-  const ClientStayWidget({Key key}) : super(key: key);
+  const ClientStayWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
