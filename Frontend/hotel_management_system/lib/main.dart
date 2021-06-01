@@ -7,6 +7,8 @@ import 'package:hotel_management_system/pages/reception/receptionScreen.dart';
 import 'package:hotel_management_system/pages/frontPage/FrontPage.dart';
 import 'package:hotel_management_system/pages/guest/guestScreen.dart';
 import 'package:hotel_management_system/utils/colorTheme.dart';
+import 'package:hotel_management_system/pages/register/registerScreen.dart';
+import 'package:hotel_management_system/pages/register/registerScreenComponent.dart';
 
 import 'components/navigationComponent.dart';
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
       home: MainContainer(
-        child: GuestScreen(),
+        child: RegisterScreen(),
       ),
     );
   }
