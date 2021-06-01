@@ -6,9 +6,11 @@ class IconText extends StatelessWidget {
       this.icon = Icons.add,
       this.text = "IconText",
       this.color = Colors.black87,
-      this.fontSize = 16.0})
+      this.fontSize = 16.0,
+      this.onTap})
       : super(key: key);
 
+  final Function onTap;
   final IconData icon;
   final String text;
   final Color color;
@@ -16,21 +18,30 @@ class IconText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          color: color,
-          size: fontSize,
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: onTap,
+        hoverColor: Colors.transparent,
+        splashColor: Theme.of(context).primaryColor.withOpacity(0.2),
+        highlightColor: Theme.of(context).primaryColor.withOpacity(0.4),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: color,
+              size: fontSize,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
+              child: Text(
+                text,
+                style: TextStyle(fontSize: fontSize, color: color),
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(6, 0, 0, 0),
-          child: Text(
-            text,
-            style: TextStyle(fontSize: fontSize, color: color),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
