@@ -36,4 +36,28 @@ public class RoomController {
     public void addReview(Long checkedInId, Date date, String content){
         checkedInService.addReview(checkedInId, date, content);
     }
+    @GetMapping(path = "/findBySizeGreaterThanAndFloorEquals")
+    public List<Room> findBySizeGreaterThanAndFloorEquals(Integer size, Integer floor){
+        return roomService.findBySizeGreaterThanAndFloorEquals(size, floor);
+    }
+    @GetMapping(path = "/findBySizeGreaterThanAndFloorEqualsOrderByPrice")
+    public List<Room> findBySizeGreaterThanAndFloorEqualsOrderByPrice(Integer size, Integer floor){
+        return roomService.findBySizeGreaterThanAndFloorEqualsOrderByPrice(size, floor);
+    }
+    @GetMapping(path = "/findByDescriptionLike")
+    public List<Room> findByDescriptionLike(String description){
+        return roomService.findByDescriptionLike(description);
+    }
+    @GetMapping(path = "/findByDescriptionLikeIgnoreCase")
+    public List<Room> findByDescriptionLikeIgnoreCase(String description){
+        return roomService.findByDescriptionLikeIgnoreCase(description);
+    }
+    @GetMapping(path = "/findDistinctBySize")
+    public List<Room> findDistinctBySize(Integer size){
+        return roomService.findDistinctBySize(size);
+    }
+    @GetMapping(path = "/getRoomNumberZero")
+    public List<Room> getRoomNumberZero(){
+        return roomService.getRoomNumberZero();
+    }
 }

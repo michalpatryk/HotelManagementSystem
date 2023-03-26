@@ -109,4 +109,22 @@ public class RoomService {
         }
         return activeRooms;
     }
+    public List<Room> findBySizeGreaterThanAndFloorEquals(Integer size, Integer floor) {
+        return roomRepository.findBySizeGreaterThanAndFloorEquals(size, floor);
+    }
+    public List<Room> findBySizeGreaterThanAndFloorEqualsOrderByPrice(Integer size, Integer floor){
+        return roomRepository.findBySizeGreaterThanAndFloorEqualsOrderByPrice(size, floor);
+    }
+    public List<Room> findByDescriptionLike(String description){
+        return roomRepository.findByDescriptionLike(description);
+    }
+    public List<Room> findByDescriptionLikeIgnoreCase(String description){
+        return roomRepository.findByDescriptionLikeIgnoreCase(description);
+    }
+    public List<Room> findDistinctBySize(Integer size){
+        return roomRepository.findDistinctBySize(size);
+    }
+    public List<Room> getRoomNumberZero(){
+        return roomRepository.getRoomNumberZero();
+    }
 }
