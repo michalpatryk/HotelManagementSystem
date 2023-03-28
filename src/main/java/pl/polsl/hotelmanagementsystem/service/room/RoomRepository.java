@@ -17,5 +17,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     List<Room> findDistinctBySize(Integer size);
     @Query("SELECT r FROM Room r WHERE r.id = 0")
     List<Room> getRoomNumberZero();
+    void deleteById(Long id);
 
 }

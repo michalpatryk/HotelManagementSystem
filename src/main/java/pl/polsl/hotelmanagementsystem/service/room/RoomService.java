@@ -1,5 +1,6 @@
 package pl.polsl.hotelmanagementsystem.service.room;
 
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -126,5 +127,9 @@ public class RoomService {
     }
     public List<Room> getRoomNumberZero(){
         return roomRepository.getRoomNumberZero();
+    }
+
+    public void deleteRoomById(Long id){
+        roomRepository.deleteById(id);
     }
 }

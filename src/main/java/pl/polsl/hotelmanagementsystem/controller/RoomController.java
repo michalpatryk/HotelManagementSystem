@@ -60,4 +60,8 @@ public class RoomController {
     public List<Room> getRoomNumberZero(){
         return roomService.getRoomNumberZero();
     }
+    @DeleteMapping(path = "/deleteRoomById")
+    public void deleteRoomById(Long id){
+        roomService.deleteRoomById(id);
+    }
 }

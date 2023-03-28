@@ -41,7 +41,7 @@ public class DbInit {
 
     private void addRooms(Integer count){
         List<Room> rooms = new LinkedList<>();
-        for(int i = 0; i < count; i++){
+        for(int i = 1; i < count + 1; i++){
             Room room = Room.builder()
                     .id((long) i)
                     .number(i)
@@ -85,7 +85,7 @@ public class DbInit {
         }
 
         if(roomRepository.findAll().isEmpty()){
-            addRooms(5);
+            addRooms(15);
         }
 
         System.out.println("Database initialized with test users");
